@@ -4,6 +4,7 @@ exports[`Header Component matches the snapshot 1`] = `
 <div>
   <nav
     class="navbar navbar-expand navbar-light bg-primary"
+    data-bs-theme="dark"
   >
     <div
       class="container"
