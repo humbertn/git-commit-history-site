@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, fireEvent, getByTestId } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import App from '../App';
 
-jest.mock('./components/CommitHistoryList', () => {
+jest.mock('../components/CommitHistoryList', () => {
   return () => <div data-testid="commit-history-list-mock"></div>
 });
 
-jest.mock('./components/Header', () => {
+jest.mock('../components/Header', () => {
   return () => <div data-testid="header-mock"></div>
 });
 

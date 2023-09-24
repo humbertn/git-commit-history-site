@@ -2,7 +2,6 @@ import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 import { ButtonGroup, ListGroup, Button} from 'react-bootstrap';
 
-
 function CommitHistoryList(props) {    
     const [commits, setCommits] = useState([]);
 
@@ -11,10 +10,9 @@ function CommitHistoryList(props) {
         owner
     } = props;
 
-
     useEffect(() => {
         axios.get(`/commit-history/${owner}/${repo}`)
-        .then(response => {
+        .then(response => {            
             setCommits(response.data);
         })
         .catch(error => {
@@ -46,7 +44,7 @@ function CommitHistoryList(props) {
         <> 
         <br/>           
             <h2>Commit History for {owner}/{repo}</h2>
-            <br/>
+            <br/>            
             <ListGroup>
                 {commits.map(currentCommit => (                    
                 <ListGroup.Item key={currentCommit.sha}>
@@ -59,8 +57,8 @@ function CommitHistoryList(props) {
                         <div className='col'>
                             <div className='float-end'>
                                 <ButtonGroup size="sm">
-                                    <Button variant='primary' onClick={() => {window.open(`https://github.com/${owner}/${repo}/commit/${currentCommit.sha}`)}}>{currentCommit.sha.substring(0, 7)}</Button>
-                                    <Button variant='primary' onClick={() => {window.open(`https://github.com/${owner}/${repo}/tree/${currentCommit.sha}`)}}>{"<>"}</Button>
+                                    <Button variant='primary' data-testid={`commit-sha-${currentCommit.sha}`} onClick={() => {window.open(`https://github.com/${owner}/${repo}/commit/${currentCommit.sha}`)}}>{currentCommit.sha.substring(0, 7)}</Button>
+                                    <Button variant='primary' data-testid={`tree-sha-${currentCommit.sha}`} onClick={() => {window.open(`https://github.com/${owner}/${repo}/tree/${currentCommit.sha}`)}}>{"<>"}</Button>
                                 </ButtonGroup>
                             </div>
                         </div>
