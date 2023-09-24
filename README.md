@@ -15,26 +15,25 @@ To run this project it is REQUIRED to have running the `git-commit-history-api`.
 
 ## Installation
 
+```bash
+$ npm install
+```
 
-Run the following command:
+## Running the app
 
-### `npm install`
+```bash
+# development
+$ npm run start
+```
 
-This will install all the necessary dependencies.
+Website will be running on `http://localhost:3000`
 
-### `npm start`
+## Test
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+```bash
+# unit tests
+$ npm run test
+```
 
 ## Notes
 This web app was created using the `Create React App`.
