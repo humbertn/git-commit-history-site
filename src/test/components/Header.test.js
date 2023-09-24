@@ -15,12 +15,6 @@ describe('Header Component', () => {
       expect(navbar).toBeInTheDocument();
     });
   
-    it('renders the Navbar with dark theme', () => {
-      const { container } = render(<Header />);
-      const navbar = container.querySelector('[data-bs-theme="dark"]');
-      expect(navbar).toBeInTheDocument();
-    });
-  
     it('renders the Navbar inside a Container', () => {
       const { container } = render(<Header />);
       const containerElement = container.querySelector('.container');

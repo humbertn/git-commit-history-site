@@ -3,9 +3,9 @@ import { Navbar, Container} from 'react-bootstrap';
 function Header() {
   return (
     <>
-      <Navbar bg="primary" data-bs-theme="dark">
+      <Navbar bg="primary">
         <Container>
-          <Navbar.Brand href="#home">Gerson Estrada</Navbar.Brand>          
+          <Navbar.Brand href="#">Gerson Estrada</Navbar.Brand>          
         </Container>
       </Navbar>
     </>
