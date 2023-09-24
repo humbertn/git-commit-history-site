@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import axios from 'axios';
+import { ButtonGroup, ListGroup, Button} from 'react-bootstrap';
 
 
 function CommitHistoryList(props) {    
@@ -42,20 +43,39 @@ function CommitHistoryList(props) {
       };
 
     return (
-        <>            
+        <> 
+        <br/>           
             <h2>Commit History for {owner}/{repo}</h2>
-            <ul>
-                {commits.map(commit => (
-                <li key={commit.sha}>
-                    <img src={commit.author.avatar_url} alt="Author" width="50" height="50" />
-                    <div>
-                    <p>{commit.commit.message}</p>
-                    <p>{getTimeSinceCommit(commit.committer.date)}</p>
-                    <p>SHA: {commit.sha.substring(0, 7)}</p>
+            <br/>
+            <ListGroup>
+                {commits.map(currentCommit => (                    
+                <ListGroup.Item key={currentCommit.sha}>
+                    <div className='row'>
+                        <div className='col'>
+                            <div className='float-start commit-title'>
+                                <b className='float-start'>{currentCommit.commit.message}</b>
+                            </div>
+                        </div>
+                        <div className='col'>
+                            <div className='float-end'>
+                                <ButtonGroup size="sm">
+                                    <Button variant='primary' onClick={() => {window.open(`https://github.com/${owner}/${repo}/commit/${currentCommit.sha}`)}}>{currentCommit.sha.substring(0, 7)}</Button>
+                                    <Button variant='primary' onClick={() => {window.open(`https://github.com/${owner}/${repo}/tree/${currentCommit.sha}`)}}>{"<>"}</Button>
+                                </ButtonGroup>
+                            </div>
+                        </div>
                     </div>
-                </li>
+                    <div className='row'>
+                        <div className='col'>
+                            <div className='commit-body float-start'>
+                                <img src={currentCommit.author.avatar_url} alt="Author" className='rounded-circle float-start' width="20" height="20" />                    
+                                <div className='float-start' title={new Date(currentCommit.commit.author.date)}><b> {currentCommit.author.login} </b> {getTimeSinceCommit(currentCommit.commit.author.date)} </div>
+                            </div>
+                        </div>
+                    </div>
+                </ListGroup.Item>
                 ))}
-            </ul>
+            </ListGroup>
         </>
     );
 }
